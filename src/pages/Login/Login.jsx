@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../login.scss';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {
