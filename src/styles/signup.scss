@@ -12,7 +12,7 @@ body,
   align-items: center;
   cursor: default;
 
-  main {
+  .signup_page {
     display: flex;
     height: 100%;
     width: 100%;
@@ -39,7 +39,7 @@ body,
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: contain;
-        background-image: url('./instagramLogo.png');
+        background-image: url('../picture/instagramLogo.png');
       }
 
       .signup_form {

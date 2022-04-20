@@ -8,8 +8,8 @@ body,
   background-color: #fafafa;
   cursor: default;
 
-  main {
-    display: inline-flex;
+  .login_page {
+    display: flex;
     height: 100%;
     width: 100%;
     flex-direction: row;
@@ -18,11 +18,16 @@ body,
 
     .preview_part {
       width: 50%;
-      height: 396px;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      background-size: contain;
-      background-image: url('./main_image.png');
+      display: flex;
+      justify-content: flex-end;
+      .picture_area {
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: contain;
+        background-image: url('../picture/main_image.png');
+        width: 350px;
+        height: 396px;
+      }
     }
 
     .login_part {
@@ -49,7 +54,7 @@ body,
           background-position: 50% 50%;
           background-repeat: no-repeat;
           background-size: contain;
-          background-image: url('./instagramLogo.png');
+          background-image: url('../picture/instagramLogo.png');
         }
 
         .login_form {
