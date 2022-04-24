@@ -1,19 +1,32 @@
 import React from 'react';
-import '../../styles/login.scss';
-// import { useDispatch } from 'react-redux';
+import '../styles/login.scss';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import stargramActions, {
+  stargramActions as userActions,
+} from '../redux/modules/user';
 
 const Login = (props) => {
-  // const dispatch = useDispatch();
-  const [id, setId] = React.useState('');
+  const dispatch = useDispatch();
+  const [email, setEmail] = React.useState('');
   const [pw, setPassword] = React.useState('');
 
   const { history } = props;
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (id === '' || pw === '') alert('아이디와 비밀번호 모두 입력해주세요');
-    console.log(id);
+
+    if (email === '' || pw === '') {
+      alert('이메일과 비밀번호 모두 입력해주세요');
+      return;
+    }
+
+    //우선은 계정 페이지로 연결되게 만듦
+    //아닐경우 api호출
+    console.log(email);
     console.log(pw);
+
+    dispatch(stargramActions.loginAPI(email, pw));
   };
 
   return (
@@ -31,7 +44,7 @@ const Login = (props) => {
                   <input
                     type="email"
                     placeholder="이메일"
-                    onChange={(event) => setId(event.target.value)}
+                    onChange={(event) => setEmail(event.target.value)}
                   />
                 </div>
                 <div className="login_div">
@@ -53,8 +66,9 @@ const Login = (props) => {
           </section>
           <section className="signup_way">
             <p>
-              계정이 없으신가요?{' '}
-              <button onClick={() => history.push('/signup')}>가입하기</button>
+              계정이 없으신가요?
+              <Link to="/signup"> 가입하기</Link>
+              {/* <button onClick={() => history.push('/signup')}>가입하기</button> */}
             </p>
           </section>
         </article>

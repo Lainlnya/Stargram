@@ -4,8 +4,8 @@ import {
   Routes as RouteLogin,
   Route,
 } from 'react-router-dom';
-import Login from './pages/Login/Login';
-import Signup from './pages/Signup/Signup';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 class Routes extends Component {
   render() {
