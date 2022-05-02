@@ -8,25 +8,25 @@ import stargramActions, {
 
 const Login = (props) => {
   const dispatch = useDispatch();
-  const [id, setId] = React.useState('');
-  const [pw, setPassword] = React.useState('');
+  const [username, setId] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   const { history } = props;
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (id === '' || pw === '') {
+    if (username === '' || password === '') {
       alert('이메일과 비밀번호 모두 입력해주세요');
       return;
     }
 
     //우선은 계정 페이지로 연결되게 만듦
     //아닐경우 api호출
-    console.log(id);
-    console.log(pw);
+    console.log(username);
+    console.log(password);
 
-    dispatch(stargramActions.loginAPI(id, pw));
+    dispatch(stargramActions.loginAPI(username, password));
   };
 
   return (

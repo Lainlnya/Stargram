@@ -9,30 +9,32 @@ import '../styles/signup.scss';
 const Signup = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = React.useState('');
-  const [userName, setName] = React.useState('');
-  const [userId, setId] = React.useState('');
-  const [pw, setPassword] = React.useState('');
-  const [pwCheck, setPwCheck] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [username, setId] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [passwordCheck, setPwCheck] = React.useState('');
 
   const handleSignup = (e) => {
     e.preventDefault();
 
     if (
       email === '' ||
-      pw === '' ||
-      userName === '' ||
-      userId === '' ||
-      pwCheck === ''
+      password === '' ||
+      name === '' ||
+      username === '' ||
+      passwordCheck === ''
     ) {
       alert('모든 정보를 입력해주세요.');
       return;
     }
 
-    if (pw != pwCheck) {
+    if (password != passwordCheck) {
       alert('비밀번호가 동일하지 않습니다.');
       return;
     }
-    dispatch(stargramActions.signupAPI(email, userName, userId, pw, pwCheck));
+    dispatch(
+      stargramActions.signupAPI(email, name, username, password, passwordCheck)
+    );
   };
 
   return (
