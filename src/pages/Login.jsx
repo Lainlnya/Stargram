@@ -2,9 +2,7 @@ import React from 'react';
 import '../styles/login.scss';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import stargramActions, {
-  stargramActions as userActions,
-} from '../redux/modules/user';
+import { stargramActions as userActions } from '../redux/modules/user';
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -20,13 +18,11 @@ const Login = (props) => {
       alert('이메일과 비밀번호 모두 입력해주세요');
       return;
     }
-
+    dispatch(userActions.loginAPI(username, password));
     //우선은 계정 페이지로 연결되게 만듦
     //아닐경우 api호출
     console.log(username);
     console.log(password);
-
-    dispatch(stargramActions.loginAPI(username, password));
   };
 
   return (

@@ -1,9 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import stargramActions, {
-  stargramActions as userActions,
-} from '../redux/modules/user';
+import { stargramActions as userActions } from '../redux/modules/user';
 import '../styles/signup.scss';
 
 const Signup = (props) => {
@@ -33,7 +31,7 @@ const Signup = (props) => {
       return;
     }
     dispatch(
-      stargramActions.signupAPI(email, name, username, password, passwordCheck)
+      userActions.signupAPI(email, name, username, password, passwordCheck)
     );
   };
 

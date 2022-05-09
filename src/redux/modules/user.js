@@ -51,6 +51,9 @@ const loginAPI = (username, password) => {
       .then((response) => {
         console.log(response.data.username);
         console.log(response.data.password);
+        console.log('token : ' + response.data);
+        axios.defaults.headers.common['Authorization'] =
+          'Bearer ' + response.data;
       });
   };
 };
@@ -60,4 +63,4 @@ const stargramActions = {
   signupAPI,
 };
 
-export default stargramActions;
+export { stargramActions };
