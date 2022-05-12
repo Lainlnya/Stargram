@@ -21,8 +21,8 @@ const Login = (props) => {
     dispatch(userActions.loginAPI(username, password));
     //우선은 계정 페이지로 연결되게 만듦
     //아닐경우 api호출
-    console.log(username);
-    console.log(password);
+    // console.log(username);
+    // console.log(password);
   };
 
   return (
@@ -35,7 +35,7 @@ const Login = (props) => {
           <section className="login_way">
             <section className="logo_part"></section>
             <section className="login_form">
-              <form onSubmit={handleLogin}>
+              <form>
                 <div className="login_div">
                   <input
                     type="text"
@@ -50,8 +50,9 @@ const Login = (props) => {
                     onChange={(event) => setPassword(event.target.value)}
                   />
                 </div>
-                <button type="submit">
-                  <div className="login_btn">로그인</div>
+                <button onClick={handleLogin}>
+                  로그인
+                  {/* <div className="login_btn">로그인</div> */}
                 </button>
               </form>
             </section>

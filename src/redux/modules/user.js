@@ -1,5 +1,16 @@
+import { createAction, handleActions } from 'redux-actions';
+import { produce } from 'immer';
+
 import axios from 'axios';
 
+const SET_USER = 'SET_USER';
+
+const setUser = createAction(SET_USER, (user) => ({ user }));
+
+const initialState = {
+  username: null,
+  is_login: false,
+};
 //회원가입
 const signupAPI = (email, name, username, password, passwordCheck) => {
   return function (dispatch, { history }) {
@@ -49,15 +60,32 @@ const loginAPI = (username, password) => {
         }
       )
       .then((response) => {
-        console.log(response.data.username);
-        console.log(response.data.password);
-        console.log('token : ' + response.data);
-        axios.defaults.headers.common['Authorization'] =
-          'Bearer ' + response.data;
+        const { accessToken } = response.data;
+        axios.headers.commom['Authorization'] = `Bearer ${accessToken}`;
+        dispatch(setUser({ username: username }));
+        window.alert('로그인 성공');
+        history.push('/signup');
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 };
-
+export default handleActions(
+  {
+    [SET_USER]: (state, action) =>
+      produce(state, (draft) => {
+        draft.username = action.payload.user.username;
+        draft.is_login = true;
+      }),
+    // [LOG_OUT]: (state, action) =>
+    //   produce(state, (draft) => {
+    //     draft.user = null;
+    //     draft.is_login = false;
+    //   }),
+  },
+  initialState
+);
 const stargramActions = {
   loginAPI,
   signupAPI,
