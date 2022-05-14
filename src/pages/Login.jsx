@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/login.scss';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router';
 import { stargramActions as userActions } from '../redux/modules/user';
 
 const Login = (props) => {
@@ -26,7 +26,7 @@ const Login = (props) => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <main className="login_page">
         <article className="preview_part">
           <div className="picture_area"></div>
@@ -64,13 +64,18 @@ const Login = (props) => {
           <section className="signup_way">
             <p>
               계정이 없으신가요?
-              <Link to="/signup"> 가입하기</Link>
-              {/* <button onClick={() => history.push('/signup')}>가입하기</button> */}
+              <button
+                onClick={() => {
+                  history.push('/signup');
+                }}
+              >
+                가입하기
+              </button>
             </p>
           </section>
         </article>
       </main>
-    </>
+    </React.Fragment>
   );
 };
 

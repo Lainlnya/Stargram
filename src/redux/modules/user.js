@@ -34,6 +34,8 @@ const signupAPI = (email, name, username, password, passwordCheck) => {
         }
       )
       .then((response) => {
+        window.alert('회원가입되었습니다.');
+        history.push('/login');
         console.log(response.data.name);
         console.log(response.data.password);
       });
@@ -60,11 +62,14 @@ const loginAPI = (username, password) => {
         }
       )
       .then((response) => {
-        const { accessToken } = response.data;
-        axios.headers.commom['Authorization'] = `Bearer ${accessToken}`;
+        const { accessToken } = response.data.token;
+        axios.defaults.headers.common[
+          'Authorization'
+        ] = `Bearer ${accessToken}`;
         dispatch(setUser({ username: username }));
         window.alert('로그인 성공');
         history.push('/signup');
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
