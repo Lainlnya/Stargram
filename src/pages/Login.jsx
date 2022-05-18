@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/login.scss';
 import { useDispatch } from 'react-redux';
-import { withRouter } from 'react-router';
 import { stargramActions as userActions } from '../redux/modules/user';
 
 const Login = (props) => {
@@ -19,10 +18,6 @@ const Login = (props) => {
       return;
     }
     dispatch(userActions.loginAPI(username, password));
-    //우선은 계정 페이지로 연결되게 만듦
-    //아닐경우 api호출
-    // console.log(username);
-    // console.log(password);
   };
 
   return (

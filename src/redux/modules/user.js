@@ -67,6 +67,7 @@ const loginAPI = (username, password) => {
           'Authorization'
         ] = `Bearer ${accessToken}`;
         dispatch(setUser({ username: username }));
+        console.log(history);
         window.alert('로그인 성공');
         history.push('/signup');
         window.location.reload();

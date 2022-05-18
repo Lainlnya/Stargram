@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { stargramActions as userActions } from '../redux/modules/user';
 import '../styles/signup.scss';

@@ -8,8 +8,8 @@ import Signup from './pages/Signup';
 const Router = (props) => {
   return (
     <React.Fragment>
-      <BrowserRouter history={history}>
-        <Routes>
+      <BrowserRouter>
+        <Routes history={history}>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
